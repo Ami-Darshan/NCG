@@ -228,6 +228,7 @@ def perturbation_test(
             "recovery_ratio": 0.0,
             "verdict": "no_fixed_point",
         }
+    saved = getattr(model, raw_attr).data.clone()
     opt_meta = torch.optim.Adam(meta_params, lr=lr_meta)
 
     model.eval()
@@ -270,6 +271,7 @@ def perturbation_test(
     else:
         verdict = "no_fixed_point"
 
+    getattr(model, raw_attr).data.copy_(saved)
     return {
         "original_value": float(original_value),
         "perturbed_value": float(perturbed_value),

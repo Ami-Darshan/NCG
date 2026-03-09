@@ -15,6 +15,7 @@ ENV/
 data/
 results/
 checkpoints/
+*.zip
 *.pkl
 *.pt
 *.pth
